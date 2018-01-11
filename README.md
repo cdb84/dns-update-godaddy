@@ -5,7 +5,7 @@ You will need to incorporate your production key into this script in order for i
 
 Usage:
 
-update-godaddy.sh [site] [DNS record type] [DNS record] [TTL]
+`update-godaddy.sh [site] [DNS record type] [DNS record] [TTL]`
 
 Will throw a kiniption if you are lacking any argument. 
 On successful completion, will echo "{}".

@@ -1,5 +1,5 @@
 # dns-update-godaddy
-A dynamic DNS updater for the GoDaddy API
+A dynamic DNS updater and creator for the GoDaddy API
 
 ## update-godaddy.sh
 You will need to incorporate your API key into this script in order for it to work properly. This spot is denoted by <API_KEY>. Insert your key and secret like so: key:secret
@@ -19,4 +19,4 @@ Usage:
 
 `update-godaddy.py [site] [type] [record] [ttl] -auth`
 
-On successful completion, will exit with status 0.
+On successful completion, will exit with status 0. On unsuccessful completion, will return the error reported by the request made to api.godaddy.com.

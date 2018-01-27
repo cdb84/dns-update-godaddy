@@ -26,6 +26,8 @@ if not args.auth:
 else:
     auth=args.auth
     
+#need to account for the @ symbol being a pain in HTML
+args.record = args.record.replace("@", "%40") 
 #form the compostite URL to be used with GoDaddy's api (v1)
 url = "https://api.godaddy.com/v1/domains/"+args.site+"/records/"+args.typ+"/"+args.record+"/"
 

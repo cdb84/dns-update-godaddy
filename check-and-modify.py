@@ -4,6 +4,7 @@ import argparse
 import getpass
 from urllib.request import urlopen
 import sys
+ip_fetch = "https://api.ipify.org"
 parser = argparse.ArgumentParser(description="A script to check a specified DNS record matches the IP for this host; and if it does not, update that IP with the ip of this host.")
 parser.add_argument("site", help="The fully qualified domain name of the particular site.", type=str)
 parser.add_argument("typ", help="The type of the record that is being updated, caps-sensitive. A, AAAA, MX, SRV, etc.", type=str)
@@ -21,7 +22,7 @@ else:
     auth=args.auth
 if not args.ip:
     #get client ip (insecure)
-    client_ip = str(urlopen("https://api.ipify.org").read())
+    client_ip = str(urlopen(ip_fetch).read())
     client_ip = client_ip.replace("b", "")
     client_ip = client_ip.replace("'", "")
 else:

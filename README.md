@@ -20,3 +20,11 @@ Usage:
 `check-and-modify.py site type record [--ttl T] [--auth A] [-ip IP] [-nr]`
 
 check-and-modify will contact the GoDaddy API servers and see if the host computer's IP or IP indicated by `-ip` matches the record stored with GoDaddy. If it does, it will do nothing and exit. If it does not, it will update the record accordingly.
+
+## Known Issues
+When using either script on Windows Powershell, @ must be replaced as "@" in the command arguments.
+
+## Dependencies
+
+1. Python "requests" library
+  `pip install requests`

@@ -7,7 +7,8 @@ import sys
 #modeled from the following curl statement:
 #curl -XPUT -H "Content-type: application/json" -H 'Authorization: sso-key <API_KEY>' -d "[{\"data\": \"$IP\",\"ttl\": $TTL}]" "https://api.godaddy.com/v1/domains/$SITE/records/"$TYPE"/$RECORD"
 
-
+_ip_fetch_ = "https://api.ipify.org"
+_ttl_low_bound_ = 600
 
 parser = argparse.ArgumentParser(description="A script to dynamically update and/or create your site's GoDaddy DNS records.")
 parser.add_argument("site", help="The fully qualified domain name of the particular site.", type=str)
@@ -27,7 +28,7 @@ else:
     auth=args.auth
 if not args.ip:
     #get client ip (insecure)
-    client_ip = str(urlopen("https://api.ipify.org").read())
+    client_ip = str(urlopen(_ip_fetch_).read())
     client_ip = client_ip.replace("b", "")
     client_ip = client_ip.replace("'", "")
 else:
@@ -42,7 +43,7 @@ headers = {
     'content-type': 'application/json',
     'Authorization': 'sso-key '+auth
     }
-if args.ttl and args.ttl >= 600:
+if args.ttl and args.ttl >= _ttl_low_bound_:
     data = [
         {"data":client_ip, "ttl":args.ttl}
     ]

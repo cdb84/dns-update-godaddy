@@ -10,7 +10,7 @@ _ttl_low_bound_ = 600
 parser = argparse.ArgumentParser(description="A script to check a specified DNS record matches the IP for this host; and if it does not, update that IP with the ip of this host.")
 parser.add_argument("site", help="The fully qualified domain name of the particular site.", type=str)
 #this argument needs to be tidied up--it should be "type", but do we know if we can call it that in python without language conflicts?
-parser.add_argument("typ", help="The type of the record that is being updated, caps-sensitive. A, AAAA, MX, SRV, etc.", type=str)
+parser.add_argument("type", help="The type of the record that is being updated, caps-sensitive. A, AAAA, MX, SRV, etc.", type=str)
 parser.add_argument("record", help="Actual record name, i.e. for gmail.google.com the record would be gmail.", type=str)
 parser.add_argument("-ip", help="An IP to use in lieu of the one that is fetched by this script. Useful if this machine is not the desired host for your DNS records. (More secure option, can implement your own \"IP getting\" methods instead of the one used in this script.)", type=str)
 parser.add_argument("-t", "--ttl", help="Time to live, in seconds. Cannot be lower than 600. GoDaddy default is 1 hour (3600 seconds)", type=int)
@@ -56,7 +56,7 @@ if req.status_code != 200:
     exit(1)
 records = req.json()
 for item in records:
-    if item['name'] == args.record and item['type'] == args.typ:
+    if item['name'] == args.record and item['type'] == args.type:
         print(item)
         if item['data'] == client_ip:
             #no action
@@ -70,7 +70,7 @@ for item in records:
                 #account for @ symbol
                 args.record = args.record.replace("@", "%40")
                 #form new composite url
-                url = "https://api.godaddy.com/v1/domains/"+args.site+"/records/"+args.typ+"/"+args.record+"/"
+                url = "https://api.godaddy.com/v1/domains/"+args.site+"/records/"+args.type+"/"+args.record+"/"
                 #ship a new request (put this time)
                 req = requests.put(url, headers=headers, data=json.dumps(data))
                 #gain result

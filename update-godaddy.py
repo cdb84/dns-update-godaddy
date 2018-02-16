@@ -12,7 +12,7 @@ _ttl_low_bound_ = 600
 
 parser = argparse.ArgumentParser(description="A script to dynamically update and/or create your site's GoDaddy DNS records.")
 parser.add_argument("site", help="The fully qualified domain name of the particular site.", type=str)
-parser.add_argument("typ", help="The type of the record that is being updated, caps-sensitive. A, AAAA, MX, SRV, etc.", type=str)
+parser.add_argument("type", help="The type of the record that is being updated, caps-sensitive. A, AAAA, MX, SRV, etc.", type=str)
 parser.add_argument("record", help="Actual record name, i.e. for gmail.google.com the record would be gmail. If the specified record does not exist, one will be created.", type=str)
 parser.add_argument("-t", "--ttl", help="Time to live, in seconds. Cannot be lower than 600.", type=int)
 parser.add_argument("-ip", help="An IP to use in lieu of the one that is fetched by this script. Useful if this machine is not the desired host for your DNS records. (More secure option, can implement your own \"IP getting\" methods instead of the one used in this script.)", type=str)
@@ -37,7 +37,7 @@ else:
 #need to account for the @ symbol being a pain in HTML
 args.record = args.record.replace("@", "%40") 
 #form the compostite URL to be used with GoDaddy's API (v1)
-url = "https://api.godaddy.com/v1/domains/"+args.site+"/records/"+args.typ+"/"+args.record+"/"
+url = "https://api.godaddy.com/v1/domains/"+args.site+"/records/"+args.type+"/"+args.record+"/"
 #form the headers
 headers = {
     'content-type': 'application/json',

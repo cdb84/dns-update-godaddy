@@ -1,4 +1,4 @@
-# dns-update-godaddy
+# godaddy-ddns-tools
 A dynamic DNS updater and creator for the GoDaddy API.
 
 ## Usage

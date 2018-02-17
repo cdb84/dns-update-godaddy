@@ -5,7 +5,7 @@ import getpass
 from urllib.request import urlopen
 import sys
 ''' 
-    Connor Berry 2016
+    Connor Berry 2018
     MIT License 
 '''
 #modeled from the following curl statement:

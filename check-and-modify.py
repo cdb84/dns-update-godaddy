@@ -4,6 +4,10 @@ import argparse
 import getpass
 from urllib.request import urlopen
 import sys
+    ''' 
+    Connor Berry 2016
+    MIT License 
+    '''
 _ip_fetch_ = "https://api.ipify.org"
 _api_url_front_ = "https://api.godaddy.com/v1/domains/"
 _ttl_low_bound_ = 600

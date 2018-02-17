@@ -4,6 +4,10 @@ import argparse
 import getpass
 from urllib.request import urlopen
 import sys
+    ''' 
+    Connor Berry 2016
+    MIT License 
+    '''
 #modeled from the following curl statement:
 #curl -XPUT -H "Content-type: application/json" -H 'Authorization: sso-key <API_KEY>' -d "[{\"data\": \"$IP\",\"ttl\": $TTL}]" "https://api.godaddy.com/v1/domains/$SITE/records/"$TYPE"/$RECORD"
 
